@@ -1,4 +1,4 @@
-# oraclebots by Vijay Kumar Yenne
+# Oracle Bots by Vijay Kumar Yenne
 
 Sample Website to showcase the Value of Oracle BOTs, provide back ground about BOTS and how to get access to Demo BOTS.
 The website is based on a boot strap template from freelancer.
