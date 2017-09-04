@@ -696,10 +696,8 @@ What we’d like is for the CSR’s to not only be able to have a conversation w
 </body>
 <script>
 
-function doJavaScriptInAjax() {
-    alert('name');
-    var uname = document.getElementById('name').value;
-    alert('name'+uname);
+function doJavaScriptInAjax() {    
+    var uname = document.getElementById('name').value;    
     var display2 = {};
     display2["processDefId"] = "default~FacebookRegistration!2.0~RegistrationProcess";
     display2["serviceName"] = "RegistrationProcess.service";
@@ -717,7 +715,7 @@ function doJavaScriptInAjax() {
    
     var dataObj = JSON.stringify(display2);
     
-    console.log('name1'+dataObj);
+    
     var settings = {
     
   "async": true,
