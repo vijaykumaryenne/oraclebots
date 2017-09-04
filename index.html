@@ -276,8 +276,15 @@
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label for="email">Face Book Id</label>
-                                <input type="email" class="form-control" placeholder="Facebook Email" id="email" required data-validation-required-message="Please enter your email address.">
+                                <label for="username">Face Book Username</label>
+                                <input type="text" class="form-control" placeholder="Facebook User Name" id="username" required data-validation-required-message="Please enter your Facebook username.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" placeholder="Oracle Email" id="email" required data-validation-required-message="Please enter your email address.">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
@@ -290,7 +297,7 @@
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label for="message">Message</label>
+                                <label for="message">Comments</label>
                                 <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
                                 <p class="help-block text-danger"></p>
                             </div>
@@ -299,9 +306,9 @@
                         <div id="success"></div>
                         <div class="row">
                             <div class="form-group col-xs-12">
-                                <button type="submit" class="btn btn-success btn-lg">Register</button>
+                                <button type="submit" onclick="doJavaScriptInAjax();" class="btn btn-success btn-lg">Register</button>
                             </div>
-                        </div>
+                        </div>                        
                     </form>
                 </div>
             </div>
@@ -685,6 +692,49 @@ What we’d like is for the CSR’s to not only be able to have a conversation w
 
     <!-- Theme JavaScript -->
     <script src="js/freelancer.min.js"></script>
+    
 </body>
+<script>
 
+function doJavaScriptInAjax() {
+    alert('name');
+    var uname = document.getElementById('name').value;
+    alert('name'+uname);
+    var display2 = {};
+    display2["processDefId"] = "default~FacebookRegistration!2.0~RegistrationProcess";
+    display2["serviceName"] = "RegistrationProcess.service";
+    display2["operation"] = "start";  
+    display2["action"] = "Submit";
+
+    var display3 = {};
+    display3["first_last_name"] = document.getElementById('name').value;
+    display3["fb_username"] = document.getElementById('username').value;
+    display3["email"] = document.getElementById('email').value;
+    display3["comments"] = document.getElementById('message').value;
+    display3["phone"] = document.getElementById('phone').value;
+    display2["params"] = display3;
+
+   
+    var dataObj = JSON.stringify(display2);
+    
+    console.log('name1'+dataObj);
+    var settings = {
+    
+  "async": true,
+  "crossDomain": true,
+  "url": "https://jpac2pcs-gse00009991.process.us2.oraclecloud.com/bpm/api/4.0/processes",
+  "method": "POST",  
+  "headers": {
+    "authorization": "Basic dmlqYXkueWVubmVAb3JhY2xlLmNvbTpXZWJDZW50ZXIwMSM=",
+    "content-type": "application/json",
+    "cache-control": "no-cache"   
+  },
+  "processData": false,
+  "data": dataObj
+}
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+}
+ </script>   
 </html>
