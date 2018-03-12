@@ -308,7 +308,7 @@
                             <div class="form-group col-xs-12">
                                 <button type="submit" onclick="doJavaScriptInAjax();" class="btn btn-success btn-lg">Register</button>
                             </div>
-                        </div>                        
+                        </div>
                     </form>
                 </div>
             </div>
@@ -531,9 +531,7 @@ What we’d like is for the CSR’s to not only be able to have a conversation w
                         <div class="modal-body">
                             <h2>Digital Campus BOT</h2>
                             <hr class="star-primary">
-                            <video width="400" controls>
-                              <source src="videos/uniBot.mp4" type="video/mp4">
-                            </video>
+                            <img src="img/portfolio/uniBot.gif" class="img-responsive img-centered" alt=""> 
                             <p style="text-align: center">Try our University BOT</p>
 
 
@@ -692,16 +690,16 @@ What we’d like is for the CSR’s to not only be able to have a conversation w
 
     <!-- Theme JavaScript -->
     <script src="js/freelancer.min.js"></script>
-    
+
 </body>
 <script>
 
-function doJavaScriptInAjax() {    
-    var uname = document.getElementById('name').value;    
+function doJavaScriptInAjax() {
+    var uname = document.getElementById('name').value;
     var display2 = {};
     display2["processDefId"] = "default~FacebookRegistration!2.0~RegistrationProcess";
     display2["serviceName"] = "RegistrationProcess.service";
-    display2["operation"] = "start";  
+    display2["operation"] = "start";
     display2["action"] = "Submit";
 
     var display3 = {};
@@ -712,20 +710,20 @@ function doJavaScriptInAjax() {
     display3["phone"] = document.getElementById('phone').value;
     display2["params"] = display3;
 
-   
+
     var dataObj = JSON.stringify(display2);
-    
-    
+
+
     var settings = {
-    
+
   "async": true,
   "crossDomain": true,
   "url": "https://jpac2pcs-gse00009991.process.us2.oraclecloud.com/bpm/api/4.0/processes",
-  "method": "POST",  
+  "method": "POST",
   "headers": {
     "authorization": "Basic dmlqYXkueWVubmVAb3JhY2xlLmNvbTpXZWJDZW50ZXIwMSM=",
     "content-type": "application/json",
-    "cache-control": "no-cache"   
+    "cache-control": "no-cache"
   },
   "processData": false,
   "data": dataObj
@@ -734,5 +732,5 @@ $.ajax(settings).done(function (response) {
   console.log(response);
 });
 }
- </script>   
+ </script>
 </html>
